@@ -13,7 +13,7 @@ print(type(opinions))
 opinion = opinions.pop()
 
 opinion_id = opinion["data-entry-id"]
-author = opinion.select_one("span.user-post_author-name").text.strip()
+author = opinion.select_one("span.user-post__author-name").text.strip()
 rcmd = opinion.select_one("span.user-post_author-recommendation > em").text.strip()
 score = opinion.select_one("span.user-post_score-count").text.strip()
 content = opinion.select_one("div.user-post_text").text.strip()
@@ -32,5 +32,3 @@ print(pros)
 print(type(author))
 print(author)
 
-
-print(opinion.prettify())
