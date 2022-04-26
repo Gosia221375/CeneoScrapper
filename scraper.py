@@ -2,7 +2,9 @@ from bs4 import BeautifulSoup
 import requests
 import json
 
-url = "https://www.ceneo.pl/45863470#tab=reviews"
+product_id = input("Please enter the product id: ")
+
+url = "https://www.ceneo.pl/{product_id}#tab=reviews"
 
 all_opinions = []
 
@@ -16,7 +18,7 @@ while (url):
         author = opinion.select_one("span.user-post__author-name").text.strip()
         try:
             rcmd = opinion.select_one("span.user-post__author-recomendation > em").text.strip()
-        except TypeError:
+        except AttributeError:
             rcmd = None
         score = opinion.select_one("span.user-post__score-count").text.strip()
         content = opinion.select_one("div.user-post__text").text.strip()
@@ -55,6 +57,10 @@ while (url):
     except TypeError:
         url = None
 
-with open("opinions/45863470.json", "w", encoding="UTF-8") as jf:
+with open(f"opinions/{product_id}.json", "w", encoding="UTF-8") as jf:
     json.dump(all_opinions, jf, indent=4, ensure_ascii=False)
 
+print(json.dumps(all_opinions, indent=4, ensure_ascii=False))
+
+print(type(cons))
+print(cons)
