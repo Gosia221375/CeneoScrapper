@@ -55,8 +55,8 @@ while (url):
         single_opinion["useful_for"] = int(single_opinion["useful_for"])
         single_opinion["useless_for"] = int(single_opinion["useless_for"])
         single_opinion["content_en"] = translator.translate(single_opinion["content"], src=src, dest=dest).text
-        single_opinion['pros_en'] = [translate(pros) for pros in single_opinion['pros']]
-        single_opinion['cons_en'] = [translate(cons) for cons in single_opinion['cons']]
+        single_opinion['pros_en'] = translate(single_opinion['pros'])
+        single_opinion['cons_en'] = translate(single_opinion['cons'])
         all_opinions.append(single_opinion)
 
     try:
